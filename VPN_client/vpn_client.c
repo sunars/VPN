@@ -13,6 +13,9 @@
 #define PACKET_SIZE 1500
 #define VPN_SERVER_IP "198.51.100.5"	/* fake one just for testing */
 #define VPN_SERVER_PORT 65000
+
+
+
 /**
  * the function allocates memory to hold client's IP.
  * struct ifaddrs is used to get information on interfaces and IP on client's machine.
@@ -67,6 +70,12 @@ void execute_command(char* command){
 
 }	
 
+typedef struct IP_H{
+	
+}IP_H;
+
+
+
 int packet_handler(int net_if){
 	char* buffer = malloc(4500);
 	if(buffer == NULL){
@@ -99,6 +108,8 @@ int packet_handler(int net_if){
 	while((num_read = read(net_if,buffer,4500)) > 0){
 		unsigned int bytes_processed = 0;
 		if(bytes_processed < num_read){
+
+			char* processing_buffer = mem
 			while((num_written = write(sock_to_server, buffer + bytes_processed, PACKET_SIZE)) != PACKET_SIZE){
 				bytes_processed += PACKET_SIZE;
 			}	
